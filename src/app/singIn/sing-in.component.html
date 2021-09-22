@@ -1,0 +1,29 @@
+<form (submit)="onSubmit(formSingIn);" #formSingIn="ngForm">
+  <input placeholder="email"
+         ngModel
+         #txtEmail="ngModel"
+         name="email"
+         required
+         email>
+
+  <p *ngIf="txtEmail.touched && txtEmail.errors?.required">Email không hợp lệ </p>
+<!--  ẩn valid = touched và hiển thị thông báo nếu có lỗi-->
+  <p *ngIf="txtEmail.touched && txtEmail.errors?.email">email is not valid</p>
+  <br>
+  <br>
+  <input placeholder="password"
+         type="password"
+         ngModel
+         #txtPassword="ngModel"
+         name="password"
+         minlength="6"
+         pattern="^[a-z0-9]*">
+  <br>
+  <p *ngIf="txtPassword.touched && txtEmail.errors?.email">password >6</p>
+  <br>
+  <!--  khi nhập giá trị không hợp lệ thì nó ổn nút submit-->
+  <button [disabled]="formSingIn.invalid">Submit</button>
+</form>
+<!--show ra lỗi không cần dùng consolog, nếu có lỗi nó hiển thị file json-->
+<p>{{txtEmail.errors|json}}</p>
+<p>{{txtPassword.errors|json}}</p>

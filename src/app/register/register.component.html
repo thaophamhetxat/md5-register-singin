@@ -1,0 +1,79 @@
+<form (submit)="onSubmit(formRegister);" #formRegister="ngForm">
+  <input placeholder="email"
+         ngModel
+         #txtEmail="ngModel"
+         name="email"
+         required
+         email>
+
+  <p *ngIf="txtEmail.touched && txtEmail.errors?.required">Email không hợp lệ </p>
+  <!--  ẩn valid = touched và hiển thị thông báo nếu có lỗi-->
+  <p *ngIf="txtEmail.touched && txtEmail.errors?.email">email is not valid</p>
+  <br>
+  <br>
+  <input placeholder="password"
+         type="password"
+         ngModel
+         #txtPassword="ngModel"
+         name="password"
+         minlength="6"
+         pattern="^[a-z0-9]*"
+         id="password"
+         (change)="check_pass();">
+  <br>
+  <p *ngIf="txtPassword.touched && txtEmail.errors?.email">password >6</p>
+  <br>
+  <input placeholder="confirmPassword"
+         type="password"
+         ngModel
+         #txtConfirmPassword="ngModel"
+         name="confirmPassword"
+         minlength="6"
+         pattern="^[a-z0-9]*"
+         id="confirmPassword"
+         (change)="check_pass();">
+  <br>
+  <br>
+  <p>country: </p>
+  <select id="gender">
+    <option value=""> -- Chọn -- </option>
+    <option value="Hung Yen">Hung Yen</option>
+    <option value="Ha Noi"> Ha Noi </option>
+  </select>
+  <br>
+  <br>
+  <input placeholder="age"
+         ngModel
+         #txtAge="ngModel"
+         name="age"
+         type="number"
+         min="18" >
+  <br>
+  <br>
+  <p>gender</p>
+  <div ngModelGroup="gender">
+    <label><input   type="checkbox" [ngModel]="false" name="Admin">Admin</label>
+    <label><input type="checkbox" [ngModel]="false" name="User">User</label>
+  </div>
+
+  <br>
+  <br>
+  <input placeholder="phone"
+         type="number"
+         ngModel
+         #txtPhone="ngModel"
+         type="number"
+         name="phone">
+  <br>
+  <br>
+  <!--  khi nhập giá trị không hợp lệ thì nó ổn nút submit-->
+  <button [disabled]="formRegister.invalid" id="submit">Submit</button>
+</form>
+<!--show ra lỗi không cần dùng consolog, nếu có lỗi nó hiển thị file json-->
+<p>{{txtEmail.errors|json}}</p>
+<p>{{txtPassword.errors|json}}</p>
+<p>{{txtConfirmPassword.errors|json}}</p>
+<p>{{txtAge.errors|json}}</p>
+
+<p>{{txtPhone.errors|json}}</p>
+<p>{{formRegister.value|json}}</p>
