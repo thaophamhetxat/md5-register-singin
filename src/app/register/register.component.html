@@ -34,12 +34,14 @@
          (change)="check_pass();">
   <br>
   <br>
-  <p>country: </p>
-  <select id="gender">
-    <option value=""> -- Chọn -- </option>
+
+  <p>country: <span >{{country}}</span></p>
+  <select [(ngModel)]="country" name="country">
+    <option value="1"> -- Chọn -- </option>
     <option value="Hung Yen">Hung Yen</option>
     <option value="Ha Noi"> Ha Noi </option>
   </select>
+
   <br>
   <br>
   <input placeholder="age"

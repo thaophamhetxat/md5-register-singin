@@ -5,12 +5,16 @@ import { AppComponent } from './app.component';
 import { SingInComponent } from './singIn/sing-in.component';
 import {FormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
+import { PersonComponent } from './person/person.component';
+import { PersonListComponent } from './person/person-list/person-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SingInComponent,
-    RegisterComponent
+    RegisterComponent,
+    PersonComponent,
+    PersonListComponent
   ],
   imports: [
     BrowserModule,

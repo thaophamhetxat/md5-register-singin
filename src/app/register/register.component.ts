@@ -10,7 +10,7 @@ export class RegisterComponent implements OnInit {
   email = '';
   password = '';
   confirmPassword = '';
-  country = '';
+  country = '1';
   age = '';
   gender = '';
   phone = '';
